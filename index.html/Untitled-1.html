@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <title>Form Validation</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>نموذج تسجيل المستخدم</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <form id="registerForm">
-    <input type="text" id="username" placeholder="Username"><br>
-    <input type="email" id="email" placeholder="Email"><br>
-    <input type="password" id="password" placeholder="Password"><br>
-    <button type="submit">Register</button>
-  </form>
-  <div id="feedback"></div>
+    <form id="registration-form">
+        <label for="username">اسم المستخدم:</label>
+        <input type="text" id="username" required>
 
-  <script src="script.js"></script>
+        <label for="email">البريد الإلكتروني:</label>
+        <input type="email" id="email" required>
+
+        <label for="password">كلمة المرور:</label>
+        <input type="password" id="password" required>
+
+        <button type="submit">تسجيل</button>
+        <div id="form-feedback"></div>
+    </form>
+    <script src="script.js"></script>
 </body>
 </html>
