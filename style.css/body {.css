@@ -12,7 +12,7 @@ form {
     background: #ffffff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     width: 100%;
     max-width: 400px;
 }
@@ -52,8 +52,16 @@ button:hover {
 #form-feedback {
     margin-top: 10px;
     padding: 10px;
-    color: #d8000c;
-    background-color: #ffbaba;
     border-radius: 4px;
-    display: none; /* مخفي بالبداية */
+    display: none;
+}
+
+#form-feedback.success {
+    color: #28a745;
+    background-color: #d4edda;
+}
+
+#form-feedback.error {
+    color: #dc3545;
+    background-color: #f8d7da;
 }
