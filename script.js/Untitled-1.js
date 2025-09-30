@@ -1,40 +1,44 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("registerForm");
-  const feedbackDiv = document.getElementById("feedback");
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('registration-form');
+    const feedbackDiv = document.getElementById('form-feedback');
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
 
-    const username = document.getElementById("username").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+        const username = document.getElementById('username').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
 
-    let messages = [];
-    let isValid = true;
+        let isValid = true;
+        let messages = [];
 
-    if (username === "") {
-      isValid = false;
-      messages.push("Username is required");
-    }
+        // تحقق اسم المستخدم
+        if (username.length < 3) {
+            isValid = false;
+            messages.push("اسم المستخدم خاص يكون على الأقل 3 حروف.");
+        }
 
-    if (!email.includes("@")) {
-      isValid = false;
-      messages.push("Please enter a valid email");
-    }
+        // تحقق البريد الإلكتروني
+        if (!email.includes('@') || !email.includes('.')) {
+            isValid = false;
+            messages.push("المرجو إدخال بريد إلكتروني صالح.");
+        }
 
-    if (password.length < 6) {
-      isValid = false;
-      messages.push("Password must be at least 6 characters");
-    }
+        // تحقق كلمة المرور
+        if (password.length < 8) {
+            isValid = false;
+            messages.push("كلمة المرور خاصها تكون على الأقل 8 حروف.");
+        }
 
-    feedbackDiv.style.display = "block";
+        // عرض الرسائل
+        feedbackDiv.style.display = "block";
 
-    if (isValid) {
-      feedbackDiv.textContent = "Registration successful!";
-      feedbackDiv.style.color = "#28a745";
-    } else {
-      feedbackDiv.innerHTML = messages.join("<br>");
-      feedbackDiv.style.color = "#dc3545";
-    }
-  });
+        if (isValid) {
+            feedbackDiv.textContent = "تم التسجيل بنجاح!";
+            feedbackDiv.style.color = "#28a745";
+        } else {
+            feedbackDiv.innerHTML = messages.join("<br>");
+            feedbackDiv.style.color = "#dc3545";
+        }
+    });
 });
