@@ -1,8 +1,8 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('registration-form');
     const feedbackDiv = document.getElementById('form-feedback');
 
-    form.addEventListener('submit', function (event) {
+    form.addEventListener('submit', function(event) {
         event.preventDefault();
 
         const username = document.getElementById('username').value.trim();
@@ -19,15 +19,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // تحقق البريد الإلكتروني
-        if (!email.includes('@') || !email.includes('.')) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
             isValid = false;
             messages.push("المرجو إدخال بريد إلكتروني صالح.");
         }
 
         // تحقق كلمة المرور
-        if (password.length < 8) {
+        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        if (!passwordRegex.test(password)) {
             isValid = false;
-            messages.push("كلمة المرور خاصها تكون على الأقل 8 حروف.");
+            messages.push("كلمة المرور خاصها تكون على الأقل 8 حروف، وتحتوي على أرقام وحروف.");
         }
 
         // عرض الرسائل
@@ -35,10 +37,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (isValid) {
             feedbackDiv.textContent = "تم التسجيل بنجاح!";
-            feedbackDiv.style.color = "#28a745";
+            feedbackDiv.className = "success";
         } else {
             feedbackDiv.innerHTML = messages.join("<br>");
-            feedbackDiv.style.color = "#dc3545";
+            feedbackDiv.className = "error";
         }
     });
 });
